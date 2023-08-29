@@ -1,6 +1,6 @@
-package com.example.quickly.repository;
+package backend.daedongje.repository;
 
-import com.example.quickly.domain.Booth;
+import backend.daedongje.domain.Booth;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BoothRepository extends JpaRepository<Booth, Long> {

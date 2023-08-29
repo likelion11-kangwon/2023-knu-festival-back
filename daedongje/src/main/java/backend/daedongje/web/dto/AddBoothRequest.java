@@ -1,6 +1,7 @@
-package com.example.quickly.web.dto;
+package backend.daedongje.web.dto;
 
-import com.example.quickly.domain.Booth;
+
+import backend.daedongje.domain.Booth;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

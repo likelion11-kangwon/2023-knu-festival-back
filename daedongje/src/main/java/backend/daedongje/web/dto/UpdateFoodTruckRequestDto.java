@@ -1,4 +1,4 @@
-package com.example.quickly.web.dto;
+package backend.daedongje.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

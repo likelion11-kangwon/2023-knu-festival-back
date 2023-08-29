@@ -1,6 +1,7 @@
-package com.example.quickly.repository;
+package backend.daedongje.repository;
 
-import com.example.quickly.domain.FoodTruck;
+
+import backend.daedongje.domain.FoodTruck;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FoodTruckRepository extends JpaRepository<FoodTruck, Long> {

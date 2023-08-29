@@ -1,10 +1,10 @@
-package com.example.quickly.web;
+package backend.daedongje.web;
 
-import com.example.quickly.domain.Booth;
-import com.example.quickly.service.BoothService;
-import com.example.quickly.web.dto.AddBoothRequest;
-import com.example.quickly.web.dto.BoothResponseDto;
-import com.example.quickly.web.dto.UpdateBoothRequestDto;
+import backend.daedongje.domain.Booth;
+import backend.daedongje.service.BoothService;
+import backend.daedongje.web.dto.AddBoothRequest;
+import backend.daedongje.web.dto.BoothResponseDto;
+import backend.daedongje.web.dto.UpdateBoothRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

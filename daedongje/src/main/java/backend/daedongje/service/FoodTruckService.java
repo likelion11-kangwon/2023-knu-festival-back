@@ -1,14 +1,12 @@
-package com.example.quickly.service;
+package backend.daedongje.service;
 
-import com.example.quickly.domain.Booth;
-import com.example.quickly.domain.FoodTruck;
-import com.example.quickly.repository.FoodTruckRepository;
-import com.example.quickly.web.dto.AddFoodTruckRequest;
-import com.example.quickly.web.dto.UpdateBoothRequestDto;
-import com.example.quickly.web.dto.UpdateFoodTruckRequestDto;
-import jakarta.transaction.Transactional;
+import backend.daedongje.domain.FoodTruck;
+import backend.daedongje.repository.FoodTruckRepository;
+import backend.daedongje.web.dto.AddFoodTruckRequest;
+import backend.daedongje.web.dto.UpdateFoodTruckRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
 @RequiredArgsConstructor // 생성자를 대신해준다.
 @Service

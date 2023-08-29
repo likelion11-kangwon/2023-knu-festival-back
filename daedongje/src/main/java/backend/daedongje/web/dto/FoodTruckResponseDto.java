@@ -1,6 +1,6 @@
-package com.example.quickly.web.dto;
+package backend.daedongje.web.dto;
 
-import com.example.quickly.domain.FoodTruck;
+import backend.daedongje.domain.FoodTruck;
 import lombok.Getter;
 
 @Getter

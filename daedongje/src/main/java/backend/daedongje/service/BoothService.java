@@ -1,12 +1,14 @@
-package com.example.quickly.service;
+package backend.daedongje.service;
 
-import com.example.quickly.domain.Booth;
-import com.example.quickly.repository.BoothRepository;
-import com.example.quickly.web.dto.AddBoothRequest;
-import com.example.quickly.web.dto.UpdateBoothRequestDto;
-import jakarta.transaction.Transactional;
+
+import backend.daedongje.domain.Booth;
+import backend.daedongje.repository.BoothRepository;
+import backend.daedongje.web.dto.AddBoothRequest;
+import backend.daedongje.web.dto.UpdateBoothRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @RequiredArgsConstructor // 생성자를 대신해준다.
 @Service

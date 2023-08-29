@@ -1,9 +1,10 @@
-package com.example.quickly.web;
+package backend.daedongje.web;
 
-import com.example.quickly.domain.Booth;
-import com.example.quickly.domain.FoodTruck;
-import com.example.quickly.service.FoodTruckService;
-import com.example.quickly.web.dto.*;
+import backend.daedongje.domain.FoodTruck;
+import backend.daedongje.service.FoodTruckService;
+import backend.daedongje.web.dto.AddFoodTruckRequest;
+import backend.daedongje.web.dto.FoodTruckResponseDto;
+import backend.daedongje.web.dto.UpdateFoodTruckRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
