@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-@MappedSuperclass
+// @MappedSuperclass
 @EntityListeners(value = { AuditingEntityListener.class })
 public class Guestbook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long num;
+    private Long id;
 
 
     @Column(length = 100, nullable = false)

@@ -9,7 +9,7 @@ public interface GuestbookService {
     default Guestbook dtoToEntity(GuestbookDTO guestbookDTO) {
 
         Guestbook guestbook = Guestbook.builder()
-                .num(guestbookDTO.getNum())
+                .id(guestbookDTO.getId())
                 .content(guestbookDTO.getContent())
                 .writer(guestbookDTO.getWriter())
                 .build();

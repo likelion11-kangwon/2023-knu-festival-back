@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class GuestbookDTO {
 
-    private Long gno;
+    private Long id;
     private String title;
     private String content;
     private String writer;

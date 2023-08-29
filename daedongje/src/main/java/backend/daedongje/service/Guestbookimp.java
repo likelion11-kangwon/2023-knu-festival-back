@@ -12,11 +12,8 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 @Transactional
 public class Guestbookimp implements GuestbookService {
-    private final GuestbookRepository guestbookRepository;
 
-    public Guestbookimp(GuestbookRepository guestbookRepository) {
-        this.guestbookRepository = guestbookRepository;
-    }
+    private final GuestbookRepository guestbookRepository;
 
     @Override
     public Long register(GuestbookDTO guestbookDTO) {
@@ -27,7 +24,7 @@ public class Guestbookimp implements GuestbookService {
         Guestbook result = guestbookRepository.save(guestbook);
 
 
-        return result.getNum();
+        return result.getId();
 
     }
 
