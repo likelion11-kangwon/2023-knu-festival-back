@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -27,8 +30,18 @@ public class FoodTruckApiController {
     public ResponseEntity<FoodTruckResponseDto> findFoodTruck(@PathVariable Long id){
         return ResponseEntity.ok().body(new FoodTruckResponseDto(foodTruckService.findById(id)));
     }
+    @GetMapping("/api/latest/foodTrucks")
+    public ResponseEntity<List<FoodTruckResponseDto>> findAllFoodTruck() {
+        List<FoodTruckResponseDto>  foodTrucks = foodTruckService.findAll()
+                .stream()
+                .map(FoodTruckResponseDto::new)
+                .collect(Collectors.toList());
 
-    @GetMapping("/api/latest/foodTruck/likes/{id}")
+        return ResponseEntity.ok().body(foodTrucks);
+
+    }
+
+    @PostMapping("/api/latest/foodTruck/likes/{id}")
     public ResponseEntity<FoodTruck> updateLikes(@PathVariable Long id){
         FoodTruck updatedFoodTruck = foodTruckService.updateLikes(id);
         return ResponseEntity.ok().body(updatedFoodTruck);

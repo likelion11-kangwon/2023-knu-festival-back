@@ -7,6 +7,7 @@ import backend.daedongje.web.dto.UpdateFoodTruckRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor // 생성자를 대신해준다.
 @Service
@@ -19,6 +20,8 @@ public class FoodTruckService {
         return foodTruckRepository.save(requestDto.toEntity());
     }
 
+    public List<FoodTruck> findAll() {
+        return foodTruckRepository.findAll();   }
 
     // 단건 조회
     public FoodTruck findById(Long id) {

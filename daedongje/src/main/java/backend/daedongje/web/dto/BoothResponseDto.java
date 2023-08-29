@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class BoothResponseDto {
-    private Integer id;
+    private Long id;
     private String name;
     private Long likes;
 

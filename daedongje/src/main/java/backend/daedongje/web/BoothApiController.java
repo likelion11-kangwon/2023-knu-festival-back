@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @RestController
 public class BoothApiController {
@@ -27,7 +30,18 @@ public class BoothApiController {
         return ResponseEntity.ok().body(new BoothResponseDto(boothService.findById(id)));
     }
 
-    @GetMapping("/api/latest/booth/likes/{id}")
+    @GetMapping("/api/latest/boothes")
+    public ResponseEntity<List<BoothResponseDto>> findAllBooth() {
+        List<BoothResponseDto>  boothes = boothService.findAll()
+                .stream()
+                .map(BoothResponseDto::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(boothes);
+
+    }
+
+    @PostMapping("/api/latest/booth/likes/{id}")
     public ResponseEntity<Booth> updateLikes(@PathVariable Long id){
         Booth updatedBooth = boothService.updateLikes(id);
         return ResponseEntity.ok().body(updatedBooth);

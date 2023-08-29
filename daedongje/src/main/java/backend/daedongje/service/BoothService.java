@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor // 생성자를 대신해준다.
 @Service
@@ -25,8 +26,10 @@ public class BoothService {
     // 단건 조회
     public Booth findById(Long id) {
         return boothRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("booth not exist ! : " + id));
-
     }
+
+    public List<Booth> findAll() {
+        return boothRepository.findAll();   }
 
     public void delete(Long id) {
         boothRepository.deleteById(id);
