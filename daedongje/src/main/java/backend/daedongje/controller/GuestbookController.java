@@ -34,13 +34,16 @@ public class GuestbookController {
         model.addAttribute("pageResponseDTO", guestbookService.list(pageRequestDTO));
 
     }
-
+    /*
+    //방명록 등록 위한 페이지
     @GetMapping("/register")
     public void register() {
 
 
     }
-
+    */
+    
+    //방명록 등록 처리
     @PostMapping("/register")
     public String register(GuestbookDTO guestbookDTO, RedirectAttributes redirectAttributes) {
 
@@ -51,7 +54,8 @@ public class GuestbookController {
 
         return "redirect:/guestbook/list";
     }
-
+    
+    //단일 방명록 조회
     @GetMapping("/read")
     public void read(Long id, @ModelAttribute("pageRequestDTO") PageRequestDTO dto, Model model) {
 
