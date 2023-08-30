@@ -30,21 +30,21 @@ public class BoothApiController {
         return ResponseEntity.ok().body(new BoothResponseDto(boothService.findById(id)));
     }
 
-    @GetMapping("/api/latest/boothes")
+    @GetMapping("/api/latest/booths")
     public ResponseEntity<List<BoothResponseDto>> findAllBooth() {
-        List<BoothResponseDto>  boothes = boothService.findAll()
+        List<BoothResponseDto> booths = boothService.findAll()
                 .stream()
                 .map(BoothResponseDto::new)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok().body(boothes);
+        return ResponseEntity.ok().body(booths);
 
     }
 
     @PostMapping("/api/latest/booth/likes/{id}")
-    public ResponseEntity<Booth> updateLikes(@PathVariable Long id){
+    public ResponseEntity<BoothResponseDto> updateLikes(@PathVariable Long id){
         Booth updatedBooth = boothService.updateLikes(id);
-        return ResponseEntity.ok().body(updatedBooth);
+        return ResponseEntity.ok().body(new BoothResponseDto(updatedBooth));
     }
 
     @DeleteMapping("api/latest/booth/{id}")
