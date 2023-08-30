@@ -26,7 +26,7 @@ public class CookieController {
     private final FoodTruckService foodTruckService;
 
     @Transactional
-    @PostMapping ("/api/foodTruck/likesCookie/{id}")
+    @PostMapping ("/api/latest/foodTruck/likesUp/{id}")
     public ResponseEntity<FoodTruckResponseDto> updateFoodTruckLikes(HttpServletResponse response, HttpServletRequest request, @PathVariable Long id){
         Cookie[] foodTruckCookies = request.getCookies();
         if(findCookieByName(foodTruckCookies, Long.toString(id))){
@@ -39,7 +39,7 @@ public class CookieController {
         return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
     }
     @Transactional
-    @PostMapping ("/api/booth/likesCookie/{id}")
+    @PostMapping ("/api/latest/booth/likesUp/{id}")
     public ResponseEntity<BoothResponseDto> updateBoothLikes(HttpServletResponse response, HttpServletRequest request, @PathVariable Long id){
         Cookie[] boothCookies = request.getCookies();
         if(findCookieByName(boothCookies, Long.toString(id))){

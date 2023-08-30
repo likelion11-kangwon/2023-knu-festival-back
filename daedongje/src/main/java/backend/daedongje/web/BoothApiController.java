@@ -41,11 +41,11 @@ public class BoothApiController {
 
     }
 
-    @PostMapping("/api/latest/booth/likes/{id}")
-    public ResponseEntity<BoothResponseDto> updateLikes(@PathVariable Long id){
-        Booth updatedBooth = boothService.updateLikes(id);
-        return ResponseEntity.ok().body(new BoothResponseDto(updatedBooth));
-    }
+//    @PostMapping("/api/latest/booth/likes/{id}")
+//    public ResponseEntity<BoothResponseDto> updateLikes(@PathVariable Long id){
+//        Booth updatedBooth = boothService.updateLikes(id);
+//        return ResponseEntity.ok().body(new BoothResponseDto(updatedBooth));
+//    }
 
     @DeleteMapping("api/latest/booth/{id}")
     public ResponseEntity<Void> deleteBooth(@PathVariable Long id){

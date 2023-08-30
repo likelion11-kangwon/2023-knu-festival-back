@@ -41,11 +41,11 @@ public class FoodTruckApiController {
 
     }
 
-    @PostMapping("/api/latest/foodTruck/likes/{id}")
-    public ResponseEntity<FoodTruckResponseDto> updateLikes(@PathVariable Long id){
-        FoodTruck updatedFoodTruck = foodTruckService.updateLikes(id);
-        return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
-    }
+//    @PostMapping("/api/latest/foodTruck/likes/{id}")
+//    public ResponseEntity<FoodTruckResponseDto> updateLikes(@PathVariable Long id){
+//        FoodTruck updatedFoodTruck = foodTruckService.updateLikes(id);
+//        return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
+//    }
 
     @DeleteMapping("api/latest/foodTruck/{id}")
     public ResponseEntity<Void> deleteFoodTruck(@PathVariable Long id){
