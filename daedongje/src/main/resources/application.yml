@@ -4,15 +4,15 @@ spring:
 #      username:
 #      password:
 #      driver-class-name: org.h2.Driver
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url:
-#    username:
-#    password:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/knu-festival?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=true
+    username: root
+    password: developerchaewon13!
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         # show_sql: true
