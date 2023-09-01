@@ -47,7 +47,7 @@ public class BoothApiController {
 //        return ResponseEntity.ok().body(new BoothResponseDto(updatedBooth));
 //    }
 
-    @DeleteMapping("api/latest/booth/{id}")
+    @DeleteMapping("/api/latest/booth/{id}")
     public ResponseEntity<Void> deleteBooth(@PathVariable Long id){
         boothService.delete(id);
         return ResponseEntity.ok().build();

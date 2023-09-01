@@ -47,7 +47,7 @@ public class FoodTruckApiController {
 //        return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
 //    }
 
-    @DeleteMapping("api/latest/foodTruck/{id}")
+    @DeleteMapping("/api/latest/foodTruck/{id}")
     public ResponseEntity<Void> deleteFoodTruck(@PathVariable Long id){
         foodTruckService.delete(id);
         return ResponseEntity.ok().build();

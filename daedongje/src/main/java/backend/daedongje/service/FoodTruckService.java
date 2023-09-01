@@ -1,5 +1,6 @@
 package backend.daedongje.service;
 
+import backend.daedongje.domain.Booth;
 import backend.daedongje.domain.FoodTruck;
 import backend.daedongje.repository.FoodTruckRepository;
 import backend.daedongje.web.dto.AddFoodTruckRequest;
@@ -47,6 +48,14 @@ public class FoodTruckService {
         FoodTruck foodTruck = foodTruckRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("foodTruck not exist! : " + id));
         foodTruck.likesUp(foodTruck);
+        return foodTruck;
+    }
+
+    @Transactional
+    public FoodTruck downLikes(Long id){
+        FoodTruck foodTruck = foodTruckRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("booth not exist! : " + id));
+        foodTruck.likesDown(foodTruck);
         return foodTruck;
     }
 }

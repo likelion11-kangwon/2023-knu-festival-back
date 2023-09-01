@@ -40,4 +40,8 @@ public class Booth {
     public void likesUp(Booth booth){
         booth.likes++;
     }
+
+    public void likesDown(Booth booth){
+        booth.likes--;
+    }
 }

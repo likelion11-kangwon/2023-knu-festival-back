@@ -45,10 +45,18 @@ public class BoothService {
     }
 
     @Transactional
-    public Booth updateLikes(Long id){
+    public Booth upLikes(Long id){
         Booth booth = boothRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("booth not exist! : " + id));
         booth.likesUp(booth);
+        return booth;
+    }
+
+    @Transactional
+    public Booth downLikes(Long id){
+        Booth booth = boothRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("booth not exist! : " + id));
+        booth.likesDown(booth);
         return booth;
     }
 }

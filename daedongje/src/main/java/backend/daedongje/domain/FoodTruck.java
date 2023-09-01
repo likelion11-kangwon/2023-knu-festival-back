@@ -37,7 +37,9 @@ public class FoodTruck {
     public void update(String name) {
         this.name = name;
     }
+
     public void likesUp(FoodTruck foodTruck){
         foodTruck.likes++;
     }
+    public void likesDown(FoodTruck foodTruck) { foodTruck.likes--;}
 }
