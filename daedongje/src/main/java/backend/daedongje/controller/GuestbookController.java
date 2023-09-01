@@ -3,23 +3,20 @@ package backend.daedongje.controller;
 import backend.daedongje.dto.GuestbookDTO;
 import backend.daedongje.dto.PageRequestDTO;
 import backend.daedongje.service.GuestbookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
-@RequestMapping("guestbook")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/guestbook")
 public class GuestbookController {
 
     private final GuestbookService guestbookService;
 
-    public GuestbookController(GuestbookService service) {
-        this.guestbookService = service;
-    }
+
 
     @GetMapping("/")
     public String index() {
@@ -38,7 +35,7 @@ public class GuestbookController {
     //방명록 등록 위한 페이지
     @GetMapping("/register")
     public void register() {
-        
+
 
     }
 
@@ -58,8 +55,6 @@ public class GuestbookController {
     //단일 방명록 조회
     @GetMapping("/read")
     public void read(Long id, @ModelAttribute("pageRequestDTO") PageRequestDTO dto, Model model) {
-
-
         model.addAttribute("guestbookDTO", guestbookService.read(id));
 
     }
