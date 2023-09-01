@@ -1,6 +1,6 @@
 package backend.daedongje.service;
 
-import backend.daedongje.entity.Guestbook;
+import backend.daedongje.domain.Guestbook;
 import backend.daedongje.repository.GuestbookRepository;
 import backend.daedongje.web.dto.AddGuestbookRequestDTO;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

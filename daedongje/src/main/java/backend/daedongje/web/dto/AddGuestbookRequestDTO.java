@@ -1,6 +1,6 @@
 package backend.daedongje.web.dto;
 
-import backend.daedongje.entity.Guestbook;
+import backend.daedongje.domain.Guestbook;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

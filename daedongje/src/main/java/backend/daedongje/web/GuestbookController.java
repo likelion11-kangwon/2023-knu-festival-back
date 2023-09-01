@@ -1,13 +1,11 @@
 package backend.daedongje.web;
 
-import backend.daedongje.entity.Guestbook;
-import backend.daedongje.repository.GuestbookRepository;
+import backend.daedongje.domain.Guestbook;
 import backend.daedongje.service.GuestbookService;
 import backend.daedongje.web.dto.AddGuestbookRequestDTO;
 import backend.daedongje.web.dto.GuestbookResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
