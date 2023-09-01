@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/2023-knu-festival-back.iml" filepath="$PROJECT_DIR$/.idea/2023-knu-festival-back.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/back.iml" filepath="$PROJECT_DIR$/.idea/back.iml" />
+>>>>>>> cecc559a4608d1448284658a6e81987dab3fb567
     </modules>
   </component>
 </project>
