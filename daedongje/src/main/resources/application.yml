@@ -18,6 +18,7 @@ spring:
     url: jdbc:mysql://daedongje-rds.codczmyir8nu.ap-northeast-2.rds.amazonaws.com:3306/daedongje_db
     username: admin
     password: daedongje8719
+
   jpa:
     defer-datasource-initialization: true
     hibernate:
@@ -26,6 +27,10 @@ spring:
       hibernate:
         # show_sql: true
         format_sql: true
+  # swagger
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 
 
