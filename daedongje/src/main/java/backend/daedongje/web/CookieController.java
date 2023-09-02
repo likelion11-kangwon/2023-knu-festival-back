@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -19,13 +20,14 @@ import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class CookieController {
 
     private final BoothService boothService;
     private final FoodTruckService foodTruckService;
 
     @Transactional
-    @PostMapping ("/api/latest/foodTruck/likesUpdate/{id}")
+    @PostMapping ("/latest/foodTruck/likesUpdate/{id}")
     public ResponseEntity<FoodTruckResponseDto> updateFoodTruckLikes(HttpServletResponse response, HttpServletRequest request, @PathVariable Long id){
         Cookie[] foodTruckCookies = request.getCookies();
         Cookie existingCookie = findCookieByName(foodTruckCookies, Long.toString(id));
@@ -42,7 +44,7 @@ public class CookieController {
         return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
     }
     @Transactional
-    @PostMapping ("/api/latest/booth/likesUpdate/{id}")
+    @PostMapping ("/latest/booth/likesUpdate/{id}")
     public ResponseEntity<BoothResponseDto> updateBoothLikes(HttpServletResponse response, HttpServletRequest request, @PathVariable Long id){
         Cookie[] boothCookies = request.getCookies();
         Cookie existingCookie = findCookieByName(boothCookies, Long.toString(id));

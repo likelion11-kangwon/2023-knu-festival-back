@@ -16,21 +16,22 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class FoodTruckApiController {
     private final FoodTruckService foodTruckService;
 
-    @PostMapping("/api/latest/foodTruck")
+    @PostMapping("/latest/foodTruck")
     public ResponseEntity<FoodTruck> addFoodTruck(@RequestBody AddFoodTruckRequest requestDto){
         return  ResponseEntity.status(HttpStatus.CREATED)
                 .body(foodTruckService.save(requestDto));
     }
 
 
-    @GetMapping("/api/latest/foodTruck/{id}")
+    @GetMapping("/latest/foodTruck/{id}")
     public ResponseEntity<FoodTruckResponseDto> findFoodTruck(@PathVariable Long id){
         return ResponseEntity.ok().body(new FoodTruckResponseDto(foodTruckService.findById(id)));
     }
-    @GetMapping("/api/latest/foodTrucks")
+    @GetMapping("/latest/foodTrucks")
     public ResponseEntity<List<FoodTruckResponseDto>> findAllFoodTruck() {
         List<FoodTruckResponseDto>  foodTrucks = foodTruckService.findAll()
                 .stream()
@@ -47,7 +48,7 @@ public class FoodTruckApiController {
 //        return ResponseEntity.ok().body(new FoodTruckResponseDto(updatedFoodTruck));
 //    }
 
-    @DeleteMapping("/api/latest/foodTruck/{id}")
+    @DeleteMapping("/latest/foodTruck/{id}")
     public ResponseEntity<Void> deleteFoodTruck(@PathVariable Long id){
         foodTruckService.delete(id);
         return ResponseEntity.ok().build();
@@ -55,7 +56,7 @@ public class FoodTruckApiController {
     }
 
     //수정
-    @PutMapping("/api/latest/foodTruck/{id}")
+    @PutMapping("/latest/foodTruck/{id}")
     public ResponseEntity<FoodTruck> updateFoodTruck(@PathVariable Long id, @RequestBody UpdateFoodTruckRequestDto requestDto) {
         FoodTruck updatedFoodTruck = foodTruckService.update(id, requestDto);
 

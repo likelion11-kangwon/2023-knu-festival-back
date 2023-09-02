@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class GuestbookController {
     private final GuestbookService guestbookService;
 

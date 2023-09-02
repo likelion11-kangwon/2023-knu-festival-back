@@ -14,7 +14,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/notice")
+@RequestMapping("/api/notice")
 public class NoticeApiController {
 
     private final NoticeService noticeService;

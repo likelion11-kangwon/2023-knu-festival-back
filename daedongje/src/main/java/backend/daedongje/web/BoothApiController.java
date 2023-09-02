@@ -15,22 +15,23 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class BoothApiController {
     private final BoothService boothService;
 
-    @PostMapping("/api/latest/booth")
+    @PostMapping("/latest/booth")
     public ResponseEntity<Booth> addBooth(@RequestBody AddBoothRequest requestDto){
         return  ResponseEntity.status(HttpStatus.CREATED)
                 .body(boothService.save(requestDto));
     }
 
 
-    @GetMapping("/api/latest/booth/{id}")
+    @GetMapping("/latest/booth/{id}")
     public ResponseEntity<BoothResponseDto> findBooth(@PathVariable Long id){
         return ResponseEntity.ok().body(new BoothResponseDto(boothService.findById(id)));
     }
 
-    @GetMapping("/api/latest/booths")
+    @GetMapping("/latest/booths")
     public ResponseEntity<List<BoothResponseDto>> findAllBooth() {
         List<BoothResponseDto> booths = boothService.findAll()
                 .stream()
@@ -47,7 +48,7 @@ public class BoothApiController {
 //        return ResponseEntity.ok().body(new BoothResponseDto(updatedBooth));
 //    }
 
-    @DeleteMapping("/api/latest/booth/{id}")
+    @DeleteMapping("/latest/booth/{id}")
     public ResponseEntity<Void> deleteBooth(@PathVariable Long id){
         boothService.delete(id);
         return ResponseEntity.ok().build();
@@ -55,7 +56,7 @@ public class BoothApiController {
     }
 
     //수정
-    @PutMapping("/api/latest/booth/{id}")
+    @PutMapping("/latest/booth/{id}")
     public ResponseEntity<Booth> updateBooth(@PathVariable Long id, @RequestBody UpdateBoothRequestDto requestDto) {
         Booth updatedBooth = boothService.update(id,requestDto);
 
