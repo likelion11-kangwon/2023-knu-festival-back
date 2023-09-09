@@ -36,7 +36,7 @@ public class NoticeService {
 //        List<NoticeListResponseDto> responseDtoList;
 //        responseDtoList = noticeList.stream().map(notice -> new NoticeListResponseDto(notice)).collect(Collectors.toList());
 
-        return noticeRepository.findAll(pageable);
+        return noticeRepository.findByDelCheckFalse(pageable);
     }
 
     public NoticeResponseDto showNotice(Long id){ // 세부 공지사항의 제목과 본문이 담긴 dto반환
