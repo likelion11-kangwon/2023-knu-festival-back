@@ -25,17 +25,34 @@ public class FoodTruck {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "place")
+    private String place;
+
+    @Column(name = "start_date")
+    private Integer startDate;
+
+    @Column(name = "end_date")
+    private Integer endDate;
+
+
     @ColumnDefault("0")
     @Column(name = "likes")
     private Long likes;
 
     @Builder
-    public FoodTruck(String name){
+    public FoodTruck(String name, String place, Integer startDate, Integer endDate)
+    {
         this.name = name;
+        this.place = place;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    public void update(String name) {
+    public void update(String name, String place, Integer startDate, Integer endDate) {
         this.name = name;
+        this.place = place;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public void likesUp(FoodTruck foodTruck){
@@ -43,3 +60,4 @@ public class FoodTruck {
     }
     public void likesDown(FoodTruck foodTruck) { foodTruck.likes--;}
 }
+

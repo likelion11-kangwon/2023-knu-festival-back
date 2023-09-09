@@ -41,6 +41,16 @@ public class FoodTruckApiController {
 
     }
 
+    @GetMapping("/api/latest/foodTrucks/{date}")
+    public ResponseEntity<List<FoodTruckResponseDto>> findAllFoodTruckByDate(@PathVariable Integer date) {
+        List<FoodTruckResponseDto>  foodTrucks = foodTruckService.findAllByDate(date)
+                .stream()
+                .map(FoodTruckResponseDto::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(foodTrucks);
+    }
+
 //    @PostMapping("/api/latest/foodTruck/likes/{id}")
 //    public ResponseEntity<FoodTruckResponseDto> updateLikes(@PathVariable Long id){
 //        FoodTruck updatedFoodTruck = foodTruckService.updateLikes(id);
