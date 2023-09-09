@@ -3,6 +3,7 @@ package backend.daedongje.web;
 import backend.daedongje.domain.Notice;
 import backend.daedongje.service.NoticeService;
 import backend.daedongje.web.dto.NoticeListResponseDto;
+import backend.daedongje.web.dto.NoticeRequestDto;
 import backend.daedongje.web.dto.NoticeResponseDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -30,4 +31,9 @@ public class NoticeApiController {
         return noticeService.showNotice(id);
     }
 
+    @PostMapping("/admin")
+    public NoticeResponseDto saveNotice(@RequestBody NoticeRequestDto noticeRequest) {
+
+        return noticeService.saveNotice(noticeRequest);
+    }
 }
