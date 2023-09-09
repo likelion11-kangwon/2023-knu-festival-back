@@ -1,6 +1,7 @@
 package backend.daedongje.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,6 +25,8 @@ public class Notice {
     @Column(nullable = false)
     private String content;
 
+    private boolean delCheck;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
@@ -31,7 +34,9 @@ public class Notice {
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 
-    public Notice(String title, String content) {
+    @Builder
+    public Notice(boolean delCheck, String title, String content) {
+        this.delCheck = delCheck;
         this.title = title;
         this.content = content;
     }
@@ -42,5 +47,10 @@ public class Notice {
 
     public void modifyContent(String content) {
         this.content = content;
+    }
+
+    public boolean delete() {
+        this.delCheck = true;
+        return true;
     }
 }

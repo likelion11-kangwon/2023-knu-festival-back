@@ -2,10 +2,7 @@ package backend.daedongje.web;
 
 import backend.daedongje.domain.Notice;
 import backend.daedongje.service.NoticeService;
-import backend.daedongje.web.dto.NoticeListResponseDto;
-import backend.daedongje.web.dto.NoticeModifyDto;
-import backend.daedongje.web.dto.NoticeRequestDto;
-import backend.daedongje.web.dto.NoticeResponseDto;
+import backend.daedongje.web.dto.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -42,5 +39,11 @@ public class NoticeApiController {
     public NoticeResponseDto modifyNotice(@RequestBody NoticeModifyDto noticeModify) {
 
         return noticeService.modifyNotice(noticeModify);
+    }
+
+    @DeleteMapping("/admin")
+    public boolean modifyNotice(@RequestBody NoticeDeleteDto noticeDelete) {
+
+        return noticeService.delete(noticeDelete);
     }
 }

@@ -2,6 +2,7 @@ package backend.daedongje.service;
 
 import backend.daedongje.domain.Notice;
 import backend.daedongje.repository.NoticeRepository;
+import backend.daedongje.web.dto.NoticeDeleteDto;
 import backend.daedongje.web.dto.NoticeModifyDto;
 import backend.daedongje.web.dto.NoticeRequestDto;
 import backend.daedongje.web.dto.NoticeResponseDto;
@@ -39,13 +40,19 @@ public class NoticeService {
     }
 
     public NoticeResponseDto showNotice(Long id){ // 세부 공지사항의 제목과 본문이 담긴 dto반환
-        Notice notice = noticeRepository.findById(id).orElseThrow(() -> new RuntimeException("notice없어!"));
+        Notice notice = noticeRepository.findById(id).orElseThrow(() -> new RuntimeException("no notice"));
         return new NoticeResponseDto(notice);
     }
 
     @Transactional
     public NoticeResponseDto saveNotice(NoticeRequestDto noticeRequest) {
-        Notice notice = new Notice(noticeRequest.getTitle(), noticeRequest.getContent());
+
+        Notice notice = Notice.builder()
+                .title(noticeRequest.getTitle())
+                .content(noticeRequest.getContent())
+                .delCheck(false)
+                .build();
+
         return new NoticeResponseDto(noticeRepository.save(notice));
     }
 
@@ -53,10 +60,19 @@ public class NoticeService {
     public NoticeResponseDto modifyNotice(NoticeModifyDto noticeModify) {
 
         Notice notice = noticeRepository.findById(noticeModify.getNoticeId())
-                .orElseThrow(() -> new RuntimeException("not notice"));
+                .orElseThrow(() -> new RuntimeException("no notice"));
 
         notice.modifyTitle(noticeModify.getTitle());
         notice.modifyContent(noticeModify.getContent());
         return new NoticeResponseDto(notice);
+    }
+
+    @Transactional
+    public boolean delete(NoticeDeleteDto noticeDelete) {
+
+        Notice notice = noticeRepository.findById(noticeDelete.getNoticeId())
+                .orElseThrow(() -> new RuntimeException("no notice"));
+
+        return notice.delete();
     }
 }
