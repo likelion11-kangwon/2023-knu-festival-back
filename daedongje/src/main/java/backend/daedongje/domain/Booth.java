@@ -24,13 +24,17 @@ public class Booth {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "place")
+    private String place;
+
     @ColumnDefault("0")
     @Column(name = "likes")
     private Long likes;
 
     @Builder
-    public Booth(String name){
+    public Booth(String name, String place){
         this.name = name;
+        this.place = place;
     }
 
     public void update(String name) {

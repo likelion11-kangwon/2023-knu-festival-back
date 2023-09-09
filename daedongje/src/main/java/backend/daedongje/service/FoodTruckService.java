@@ -1,6 +1,5 @@
 package backend.daedongje.service;
 
-import backend.daedongje.domain.Booth;
 import backend.daedongje.domain.FoodTruck;
 import backend.daedongje.repository.FoodTruckRepository;
 import backend.daedongje.web.dto.AddFoodTruckRequest;
@@ -24,10 +23,17 @@ public class FoodTruckService {
     public List<FoodTruck> findAll() {
         return foodTruckRepository.findAll();   }
 
-    // 단건 조회
+    public List<FoodTruck> findAllByDate(Integer date){
+        return foodTruckRepository.findByStartDateAndEndDate(date);
+    }
+
+    // 단건 조회(id로)
     public FoodTruck findById(Long id) {
         return foodTruckRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("foodTruck not exist ! : " + id));
+    }
 
+    public FoodTruck findByName(String name) {
+        return foodTruckRepository.findByName(name).orElseThrow(()-> new IllegalArgumentException("foodTruck not exist! : " + name));
     }
 
     public void delete(Long id) {
@@ -39,7 +45,7 @@ public class FoodTruckService {
     public FoodTruck update(Long id, UpdateFoodTruckRequestDto requestDto) {
         FoodTruck foodTruck = foodTruckRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("foodTruck not exist! : " + id));
-        foodTruck.update(requestDto.getName());
+        foodTruck.update(requestDto.getName(), requestDto.getPlace(), requestDto.getStartDate(), requestDto.getStartDate());
         return  foodTruck;
     }
 

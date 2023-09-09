@@ -9,4 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UpdateFoodTruckRequestDto {
     private String name;
+    private String place;
+    private Integer startDate;
+    private Integer endDate;
 }

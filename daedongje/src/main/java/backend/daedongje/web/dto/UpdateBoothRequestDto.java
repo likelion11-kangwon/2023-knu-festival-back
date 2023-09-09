@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UpdateBoothRequestDto {
     private String name;
+    private String place;
 }
