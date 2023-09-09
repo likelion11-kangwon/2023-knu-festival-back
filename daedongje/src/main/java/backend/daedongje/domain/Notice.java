@@ -35,4 +35,12 @@ public class Notice {
         this.title = title;
         this.content = content;
     }
+
+    public void modifyTitle(String title) {
+        this.title = title;
+    }
+
+    public void modifyContent(String content) {
+        this.content = content;
+    }
 }

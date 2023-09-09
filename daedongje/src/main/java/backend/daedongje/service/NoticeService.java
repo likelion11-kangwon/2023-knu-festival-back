@@ -2,6 +2,7 @@ package backend.daedongje.service;
 
 import backend.daedongje.domain.Notice;
 import backend.daedongje.repository.NoticeRepository;
+import backend.daedongje.web.dto.NoticeModifyDto;
 import backend.daedongje.web.dto.NoticeRequestDto;
 import backend.daedongje.web.dto.NoticeResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +47,16 @@ public class NoticeService {
     public NoticeResponseDto saveNotice(NoticeRequestDto noticeRequest) {
         Notice notice = new Notice(noticeRequest.getTitle(), noticeRequest.getContent());
         return new NoticeResponseDto(noticeRepository.save(notice));
+    }
+
+    @Transactional
+    public NoticeResponseDto modifyNotice(NoticeModifyDto noticeModify) {
+
+        Notice notice = noticeRepository.findById(noticeModify.getNoticeId())
+                .orElseThrow(() -> new RuntimeException("not notice"));
+
+        notice.modifyTitle(noticeModify.getTitle());
+        notice.modifyContent(noticeModify.getContent());
+        return new NoticeResponseDto(notice);
     }
 }
