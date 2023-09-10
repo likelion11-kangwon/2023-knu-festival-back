@@ -3,6 +3,7 @@ package backend.daedongje.service;
 import backend.daedongje.domain.Guestbook;
 import backend.daedongje.repository.GuestbookRepository;
 import backend.daedongje.web.dto.AddGuestbookRequestDTO;
+import backend.daedongje.web.dto.GuestBookDeleteDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +35,7 @@ public class GuestbookService {
     /* Paging */
     @Transactional(readOnly = true)
     public Page<Guestbook> pageList(Pageable pageable) {
-        return guestbookRepository.findAll(pageable);
+        return guestbookRepository.findByDelCheckFalse(pageable);
     }
 
     /*
@@ -50,4 +51,12 @@ public class GuestbookService {
     }
     */
 
+    @Transactional
+    public boolean delete(GuestBookDeleteDto guestBookDelete) {
+
+        Guestbook guestBook = guestbookRepository.findById(guestBookDelete.getGuestBookId())
+                .orElseThrow(() -> new RuntimeException("no guestBook"));
+
+        return guestBook.delete();
+    }
 }

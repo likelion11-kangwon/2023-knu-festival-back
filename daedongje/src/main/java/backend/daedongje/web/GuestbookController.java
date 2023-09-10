@@ -3,6 +3,7 @@ package backend.daedongje.web;
 import backend.daedongje.domain.Guestbook;
 import backend.daedongje.service.GuestbookService;
 import backend.daedongje.web.dto.AddGuestbookRequestDTO;
+import backend.daedongje.web.dto.GuestBookDeleteDto;
 import backend.daedongje.web.dto.GuestbookResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -47,9 +48,16 @@ public class GuestbookController {
 
     //페이지 처리
     @GetMapping("/guestbook/pageList")
-    public ResponseEntity<Page<Guestbook>> page(Model model, @PageableDefault(sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<Page<GuestbookResponseDTO>> page(@PageableDefault(sort="id", direction = Sort.Direction.DESC) Pageable pageable){
 
         Page<Guestbook> guestbooks = guestbookService.pageList(pageable);
-        return new ResponseEntity<>(guestbooks,HttpStatus.OK);
+
+        return new ResponseEntity<>(guestbooks.map(GuestbookResponseDTO::new), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/guestbook/admin")
+    public boolean delete(@RequestBody GuestBookDeleteDto guestBookDelete){
+
+        return guestbookService.delete(guestBookDelete);
     }
 }

@@ -24,14 +24,21 @@ public class Guestbook {
     @Column(name="writer",length = 15, nullable = false)
     private String writer;
 
+    private boolean delCheck;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime regDate;
 
     @Builder
-    public Guestbook(String content, String writer){
+    public Guestbook(String content, String writer, boolean delCheck){
         this.content=content;
         this.writer=writer;
+        this.delCheck = delCheck;
     }
 
+    public boolean delete() {
+        this.delCheck = true;
+        return true;
+    }
 }

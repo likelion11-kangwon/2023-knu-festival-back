@@ -13,6 +13,6 @@ public class AddGuestbookRequestDTO {
     private String writer;
 
     public Guestbook toEntity(){
-        return Guestbook.builder().content(content).writer(writer).build();
+        return Guestbook.builder().content(content).writer(writer).delCheck(false).build();
     }
 }
