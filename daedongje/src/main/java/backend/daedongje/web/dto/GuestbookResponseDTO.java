@@ -2,9 +2,11 @@ package backend.daedongje.web.dto;
 
 import backend.daedongje.domain.Guestbook;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Setter
 @Getter
 public class GuestbookResponseDTO {
 

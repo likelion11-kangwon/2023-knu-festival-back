@@ -26,7 +26,7 @@ public class GuestbookController {
 
     //방명록 등록
     @PostMapping("/guestbook/register")
-    public ResponseEntity<Guestbook> registerGuestbook(@RequestBody AddGuestbookRequestDTO requestDTO){
+    public ResponseEntity<GuestbookResponseDTO> registerGuestbook(@RequestBody AddGuestbookRequestDTO requestDTO){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(guestbookService.save(requestDTO));
     }
@@ -48,9 +48,9 @@ public class GuestbookController {
 
     //페이지 처리
     @GetMapping("/guestbook/pageList")
-    public ResponseEntity<Page<GuestbookResponseDTO>> page(@PageableDefault(sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<Page<GuestbookResponseDTO>> showAllGuestBook(@RequestParam(value="page", defaultValue = "0") int page){
 
-        Page<Guestbook> guestbooks = guestbookService.pageList(pageable);
+        Page<Guestbook> guestbooks = guestbookService.pageList(page);
 
         return new ResponseEntity<>(guestbooks.map(GuestbookResponseDTO::new), HttpStatus.OK);
     }
