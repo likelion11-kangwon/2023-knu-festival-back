@@ -83,6 +83,6 @@ public class NoticeService {
         sorts.add(Sort.Order.desc("createdDate"));
 
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return noticeRepository.findByCategory(category, pageable);
+        return noticeRepository.findByCategoryAndDelCheckFalse(category, pageable);
     }
 }

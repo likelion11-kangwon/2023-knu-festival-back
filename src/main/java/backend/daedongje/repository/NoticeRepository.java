@@ -9,5 +9,5 @@ public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
     Page<Notice> findByDelCheckFalse(Pageable pageable);
 
-    Page<Notice> findByCategory(String category, Pageable pageable);
+    Page<Notice> findByCategoryAndDelCheckFalse(String category, Pageable pageable);
 }
