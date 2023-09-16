@@ -14,9 +14,11 @@ public class NoticeRequestDto {
 
     private String title;
     private String content;
+    private String category;
 
     public NoticeRequestDto(Notice notice) {
         this.title = notice.getTitle();
         this.content = notice.getContent();
+        this.category = notice.getCategory();
     }
 }

@@ -14,6 +14,7 @@ public class NoticeListResponseDto {
     private Long noticeId;
     private String title;
     private String content;
+    private String category;
     private LocalDateTime createDate;
 
     //Entity -> Dto
@@ -21,6 +22,7 @@ public class NoticeListResponseDto {
         this.noticeId = notice.getId();
         this.title = notice.getTitle();
         this.content = notice.getContent();
+        this.category = notice.getCategory();
         this.createDate = notice.getCreatedDate();
     }
 }

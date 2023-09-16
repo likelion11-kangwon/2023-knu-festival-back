@@ -29,6 +29,8 @@ public class Notice {
 
     private boolean delCheck;
 
+    private String category;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
@@ -37,10 +39,11 @@ public class Notice {
     private LocalDateTime lastModifiedDate;
 
     @Builder
-    public Notice(boolean delCheck, String title, String content) {
+    public Notice(boolean delCheck, String title, String content, String category) {
         this.delCheck = delCheck;
         this.title = title;
         this.content = content;
+        this.category = category;
     }
 
     public void modifyTitle(String title) {

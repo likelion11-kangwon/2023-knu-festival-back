@@ -50,6 +50,7 @@ public class NoticeService {
         Notice notice = Notice.builder()
                 .title(noticeRequest.getTitle())
                 .content(noticeRequest.getContent())
+                .category(noticeRequest.getCategory())
                 .delCheck(false)
                 .build();
 
@@ -74,5 +75,14 @@ public class NoticeService {
                 .orElseThrow(() -> new RuntimeException("no notice"));
 
         return notice.delete();
+    }
+
+    public Page<Notice> getCategoryNotice(String category, int page) {
+
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createdDate"));
+
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        return noticeRepository.findByCategory(category, pageable);
     }
 }

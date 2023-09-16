@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
     Page<Notice> findByDelCheckFalse(Pageable pageable);
+
+    Page<Notice> findByCategory(String category, Pageable pageable);
 }
